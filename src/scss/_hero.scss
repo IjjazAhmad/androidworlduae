@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+
+.bth-hover {
+    border-radius: 50px;
+    border: none;
+    padding: 13px 40px;
+    color: #fff !important;
+    transition: all 0.4s ease;
+}
+
+.bth-hover:hover {
+    background-color: $danger !important;
+}
+
+.hero {
+    margin: 50px 0;
+
+    .container {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    img {
+        width: 220px;
+        height: 250px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .hero {
+        margin: 50px 0;
+        text-align: center;
+
+        h1 {
+            font-size: 20px;
+        }
+
+        .btn {
+            padding: 5px;
+        }
+
+        img {
+            width: 220px;
+            height: 250px;
+        }
+    }
+
+}

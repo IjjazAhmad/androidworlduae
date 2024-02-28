@@ -1,0 +1,130 @@
+.product-grid {
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid $addToCartBg;
+    position: relative;
+}
+
+.product-card,
+.product-grid {
+    transition: all 0.6s ease;
+}
+
+.product-card:hover,
+.product-grid:hover {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0px, $danger 0px 2px 6px 2px;
+}
+
+.product-grid .product-image {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.product-grid .product-image .image {
+    display: block;
+}
+
+.product-grid .product-image img {
+    width: 230px;
+    height: 260px;
+    transition: all .5s ease 0s;
+}
+
+.product-grid:hover .product-image img {
+    transform: scale(1.2);
+}
+
+.product-discount-label {
+    color: #fff;
+    background: $label;
+    border-bottom-right-radius: 10px;
+    font-size: 13px;
+    line-height: 25px;
+    padding: 0 20px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    z-index: 99;
+}
+
+.product-grid .product-links {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: absolute;
+    top: 10px;
+    right: -60px;
+    transition: all .5s ease 0s;
+}
+
+.product-grid:hover .product-links {
+    right: 10px;
+}
+
+.product-grid .product-links li a {
+    color: #fff;
+    background: transparent;
+    font-size: 20px;
+    line-height: 38px;
+    padding: 2px 10px;
+    border: 1px solid #5a5a5ace;
+    // border-bottom: none;
+    display: block;
+    transition: all 0.3s;
+    background: #333;
+}
+
+.product-grid .product-links li:last-child a {
+    border-bottom: 1px solid #333;
+}
+
+.product-grid .product-links li a:hover {
+    color: $addToCartBg;
+    background: #fff;
+    border-color: #fff !important;
+}
+
+.product-grid .add-to-cart {
+    background: $label;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    padding: 10px 26px;
+    transition: all 0.8s ease;
+}
+
+.product-grid .add-to-cart:hover {
+    background: #fff;
+    color: $addToCartBg;
+}
+
+
+.product-grid .product-content {
+    background: #fff;
+    padding: 15px;
+    border-top: 2px solid #333;
+}
+
+.product-grid .title {
+    // width: 200px !important;
+    font-size: 14px;
+    overflow: hidden;
+    transition: all 0.3s ease 0s;
+}
+
+.product-grid:hover .title {
+    color: $addToCartBg;
+}
+
+.product-grid .price {
+    font-size: 12px;
+    color: $addToCartBg;
+    transition: all 0.3s ease 0s;
+}
+
+.product-grid:hover .price {
+    color: #333;
+}

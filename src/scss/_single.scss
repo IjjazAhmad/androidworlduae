@@ -1,0 +1,20 @@
+@media (max-width:380px) {
+    .single {
+        .product-data {
+            text-align: center;
+
+            .star {
+                flex-direction: column !important;
+            }
+
+            .des {
+                text-align: justify;
+            }
+        }
+    }
+}
+
+.single-img {
+    width: 450px !important;
+    height: 400px !important;
+}

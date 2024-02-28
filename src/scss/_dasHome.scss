@@ -1,0 +1,29 @@
+.section {
+    .card {
+        .icon {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+
+            i {
+                font-size: 15px;
+                margin-left: 1px;
+            }
+        }
+    }
+
+    .cat-card {
+        position: relative;
+
+        .delet {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    }
+}

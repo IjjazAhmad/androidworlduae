@@ -1,0 +1,24 @@
+.footer {
+    .show-none {
+        display: block !important;
+    }
+
+}
+
+@media (max-width:600px) {
+    .footer {
+        padding-bottom: 5rem !important;
+
+        .show-none {
+            display: none !important;
+        }
+    }
+}
+
+.nav-link {
+    transition: all 0.5s ease;
+}
+
+.nav-link:hover {
+    color: $warning !important;
+}

@@ -1,0 +1,108 @@
+$offcanvas-horizontal-width: 300px;
+$offcanvas-vertical-height: 20vh;
+@import './scss//color';
+@import './scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,500&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.heading-1 {
+  text-align: center;
+  font-weight: 800;
+}
+
+.heading-2 {
+  font-size: 25px !important;
+}
+
+.active {
+  background-color: $danger !important;
+}
+
+.from-w {
+  width: 35% !important;
+}
+
+.div {
+  position: relative;
+  display: inline-block;
+
+  .button__badge {
+    background-color: #fa3e3e;
+    border-radius: 15px;
+    color: white;
+    padding: 5px 9px;
+    font-size: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  padding: 5px 13px;
+  background-color: $danger;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  box-shadow: $warning 0px 10px 20px -12px;
+  z-index: 111;
+}
+
+
+.cart-img {
+  width: 20% !important;
+  height: 20% !important;
+}
+
+@media screen and (max-width: 600px) {
+  .cart-img {
+    width: 60% !important;
+    height: 20% !important;
+  }
+}
+
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  color: #000000 !important;
+}
+
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  color: #000000 !important;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  background-color: #fff;
+  border-radius: 200px;
+  box-shadow: $warning 0px 10px 20px -12px;
+  padding: 10px;
+  font-size: 10px !important;
+}
+
+.bg {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+}
+
+.swiper-pagination-bullet {
+  z-index: 999;
+  width: 15px !important;
+  height: 15px !important;
+  background: transparent !important;
+  border: 2px solid black;
+}
+
+.swiper-pagination-bullet-active {
+  background: $danger !important;
+  border: none;
+}

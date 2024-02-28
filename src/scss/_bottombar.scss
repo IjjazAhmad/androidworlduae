@@ -1,0 +1,18 @@
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px;
+    z-index: 999;
+    display: none;
+}
+
+@media (max-width:480px) {
+    .bottom-bar{
+        display: block;
+    }
+}

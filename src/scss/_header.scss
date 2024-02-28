@@ -1,0 +1,32 @@
+.header {
+    transition: all 0.6s ease;
+    
+    .hover:hover {
+        transition: all .6s;
+        cursor: pointer;
+        font-size: 15px !important;
+        color: $danger !important;
+    }
+
+    .navbar-brand img {
+        width: 60%;
+    }
+
+    .select-category {
+        display: none;
+    }
+
+    .text-category {
+        display: block;
+    }
+}
+
+@media (max-width: 500px) {
+    .text-category {
+        display: none !important;
+    }
+
+    .select-category {
+        display: block !important;
+    }
+}
