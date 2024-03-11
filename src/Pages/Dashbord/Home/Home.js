@@ -37,7 +37,6 @@ export default function Home() {
 
   }, [])
   const handelDelte = async (product) => {
-    console.log("🚀 ~ handelDelte ~ product:", product)
     setLoader(product.id);
     try {
       await deleteObject(ref(storage, product.image));
