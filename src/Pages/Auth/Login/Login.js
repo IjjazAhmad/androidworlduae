@@ -60,9 +60,12 @@ export default function Login() {
                     <input type="password" className="border-danger form-control shadow-none" value={state.password} name='password' onChange={handelChange} required placeholder="Password" />
                   </div>
                 </div>
+                <div className='text-end text-danger'>
+                  <Link to="/auth/forgetpassword">Forget Password?</Link>
+                </div>
                 <div className="row my-3  mb-5 text-center">
                   <div className="col">
-                    <button type="button" onClick={handelSubmit} className=" btn bg " >Login</button>
+                    <button type="button" onClick={handelSubmit} className="btn btn-danger text-white px-4" >Login</button>
                     <p className="mt-4 ">Create an account?<Link to="/auth/register"> Register</Link></p>
                   </div>
                 </div>

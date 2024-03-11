@@ -8,7 +8,7 @@ export default function DashBordCard(props) {
       </div>
       <p className="mb-0 title fw-semibold">
         {props.title} <br/>
-        <span className={`text-white`}>{props.totalOrder}</span>
+        <span className={`text-white fw-light`}>{props.totalOrder}</span>
       </p>
       </div>
   );

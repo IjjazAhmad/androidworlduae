@@ -84,12 +84,12 @@ export default function Footer() {
         </div>
         <hr />
         <div className="row justify-content-center">
-          <div className="col-12 col-md-6 col-lg-6">
+          <div className="col-12 col-md-6 col-lg-6 text-center text-sm-start">
             <span>&copy; {year} AW_UAE. All Rights Reserved.</span>
           </div>
-          <div className="col-12 col-md-6 col-lg-6 text-end">
+          <div className="col-12 col-md-6 col-lg-6 text-center text-sm-end">
             <span>
-              Developed By{' '}
+              Developed By
               <a href="mailto:ijjazahmad705@gmail.com">
                 IjjazAhmad
               </a>

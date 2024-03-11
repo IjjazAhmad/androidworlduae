@@ -31,8 +31,8 @@ export default function SingleProduct() {
         {Product.map((singleProduct, i) => {
           if (singleProduct.id === id) {
             return (
-              <>
-                <div className='row' key={i}>
+              <React.Fragment key={i}>
+                <div className='row'>
                   <div className='col-12 col-md-8 col-lg-6 d-flex justify-content-center align-items-center' >
                     <img src={singleProduct.image} className='img-fluid single-img' />
                   </div>
@@ -43,7 +43,7 @@ export default function SingleProduct() {
                         <p className='text-warning me-3'> <i className="fa-solid fa-star"></i> <i className="fa-solid fa-star"></i> <i className="fa-solid fa-star"></i> <i className="fa-solid fa-star"></i> <i className="fa-solid fa-star-half-stroke"></i> </p>
                         <p>({singleProduct.reviews}  Customer Reviews)</p>
                       </div>
-                      <p> <span className='text-danger'>Deal of the day :</span> ${singleProduct.price}</p>
+                      <p> <span className='text-danger'>Deal of the day :</span> AED {singleProduct.price}</p>
                       <div dangerouslySetInnerHTML={{__html: singleProduct.description}}></div>
                       <p>Available : <span className='text-danger'>{singleProduct.stock > 0 ? "In Stock" : "Not Available"}</span></p>
                       <p>id : <span className='text-danger'>{singleProduct.id}</span></p>
@@ -68,7 +68,7 @@ export default function SingleProduct() {
                     </p>
                   </div>
                 </div>
-              </>
+              </React.Fragment>
             )
           }
         })

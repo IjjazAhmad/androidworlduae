@@ -21,8 +21,7 @@ export default function Check() {
 
     const { user } = useContext(AuthContext)
     const { total_price, cart, dispatch } = useCartContext();
-    const shippingfee = 0;
-    const ordertotal = total_price + shippingfee;
+    const ordertotal = total_price ;
     const [state, Setstate] = useState(initialState)
     const [loading, setloading] = useState(false)
 
@@ -81,7 +80,7 @@ export default function Check() {
         dispatch({ type: "CLEAR_CART" });
         setloading(false)
     }
-    
+
     return (
         <>
             <TopBar title="CheckOut" />
@@ -156,13 +155,13 @@ export default function Check() {
                         <div className="col-12 col-md-12 col-lg-5 rounded-3 mb-4 p-3">
                             <div className="p-3 text-center bg border-bottom border-danger border-2">
                                 <p><span>SubTotal:</span>
-                                    <span className='ms-2 text-danger border-bottom border-danger border-2'>${(total_price)}</span>
+                                    <span className='ms-2 text-danger border-bottom border-danger border-2'>AED {(total_price)}</span>
                                 </p>
-                                <p><span>Shopping Fee:</span>
-                                    <span className='ms-2 text-danger border-bottom border-danger border-2'>${(shippingfee)}</span>
+                                <p><span>Shipping Fee:</span>
+                                    <span className='ms-2 text-danger border-bottom border-danger border-2'>AED 00</span>
                                 </p>
                                 <p><span>Order Total:</span>
-                                    <span className='ms-2 text-danger border-bottom border-danger border-2'>${(total_price + shippingfee)}</span>
+                                    <span className='ms-2 text-danger border-bottom border-danger border-2'>AED {(total_price)}</span>
                                 </p>
                             </div>
                             <button type='button' className="bth-hover bg-light w-100 rounded-1" onClick={handelsubmit}>

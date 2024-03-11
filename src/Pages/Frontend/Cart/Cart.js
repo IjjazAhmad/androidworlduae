@@ -36,13 +36,13 @@ export default function Cart() {
                       <th scope="row"><i className=" fa-solid fa-trash text-danger" onClick={() => removeItem(curelem.id)}></i></th>
                       <td className='w-25'><img src={curelem.image} className='cart-img' /></td>
                       <td>{curelem.name}</td>
-                      <td>${(price)}</td>
+                      <td>AED {(price)}</td>
                       <td> <CartAmountToggle
                         amount={curelem.amount}
                         setDecrease={() => setDecrement(curelem.id)}
                         setIncrease={() => setIncrement(curelem.id)}
                       /> </td>
-                      <td>${(curelem.price * curelem.amount)} </td>
+                      <td>AED {(curelem.price * curelem.amount)} </td>
                     </tr>
                   )
                 })}
@@ -65,13 +65,13 @@ export default function Cart() {
           <div className="col-12 col-md-6 col-lg-4">
             <div className="p-3 text-center bg border-bottom border-danger border-2">
               <p><span>SubTotal:</span>
-                <span className='ms-2 text-danger border-bottom border-danger border-2'>${(total_price)}</span>
+                <span className='ms-2 text-danger border-bottom border-danger border-2'>AED {(total_price)}</span>
               </p>
               <p><span>Shipping Fee:</span>
-                <span className='ms-2 text-danger border-bottom border-danger border-2'>$00.00</span>
+                <span className='ms-2 text-danger border-bottom border-danger border-2'>AED 00.00</span>
               </p>
               <p><span>Order Total:</span>
-                <span className='ms-2 text-danger border-bottom border-danger border-2'>${(total_price)}</span>
+                <span className='ms-2 text-danger border-bottom border-danger border-2'>AED {(total_price)}</span>
               </p>
             </div>
           </div>

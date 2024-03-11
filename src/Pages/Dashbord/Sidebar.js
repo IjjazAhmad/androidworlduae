@@ -2,8 +2,11 @@ import React from 'react'
 import Route from './Route'
 import { Link } from 'react-router-dom'
 import logo from '../../Assets/images/sidebar-logo.jpg'
-
+import { useFilterProductContext } from '../Context/Filterproduct'
 export default function Sidebar() {
+
+    const { updatefiltervalue } = useFilterProductContext();
+
     return (
         <div className="mainsidebar">
             <header>
@@ -66,14 +69,14 @@ export default function Sidebar() {
                                 className='w-100'
                                 alt="MDB Logo" />
                         </Link>
-                        <form className="d-none d-md-flex input-group w-auto my-auto">
+                        <form className="d-none d-md-flex input-group w-auto my-auto" onSubmit={(e) => { e.preventDefault() }}>
                             <input
                                 type="search"
+                                onChange={updatefiltervalue} name='sidetext'
                                 className="form-control rounded"
                                 placeholder='Search'
                                 style={{ minWidth: "225px" }}
                             />
-                            <span className="input-group-text border-0"><i className="fas fa-search"></i></span>
                         </form>
                     </div>
                 </nav>

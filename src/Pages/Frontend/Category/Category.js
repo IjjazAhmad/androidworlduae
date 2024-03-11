@@ -10,7 +10,7 @@ import 'swiper/css/scrollbar';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function Category() {
-  const { products, category } = useProductContext()
+  const { products, categories } = useProductContext()
   let { name } = useParams()
   const [fitlteProducts, SetfitlteProducts] = useState([]);
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function Category() {
         Shop By Category
       </h1>
       <div className="row fw-semibold mb-5">
-        {category.map((item, j) => {
+        {categories.map((item, j) => {
           return (
 
             <div key={j} className="col-6 col-md-3 col-lg-2">

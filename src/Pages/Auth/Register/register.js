@@ -117,7 +117,7 @@ export default function Register() {
                 </div>
                 <div className="row my-3  mb-5 text-center">
                   <div className="col">
-                    <button type="button" onClick={handelSubmit} className=" btn bg" >Create Account</button>
+                    <button type="button" onClick={handelSubmit} className="btn btn-danger text-white px-4" >Create Account</button>
                     <p className="mt-4 ">Already have an account?<Link to="/auth/login" className=' '>Login</Link></p>
                   </div>
                 </div>

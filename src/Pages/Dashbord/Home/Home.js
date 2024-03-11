@@ -8,14 +8,27 @@ import { A11y, Navigation, Pagination, Scrollbar } from 'swiper/modules'
 import { useProductContext } from '../../Context/ProductContext'
 import { toast } from 'react-toastify'
 import { deleteObject, ref } from 'firebase/storage'
+import { useFilterProductContext } from '../../Context/Filterproduct'
 
 export default function Home() {
   const { dispatch, products, users, categories, orders } = useProductContext()
   const [product, setproduct] = useState(products)
+  const [dashbordproduct, setdashbordproduct] = useState(products)
   const [categorie, setcategorie] = useState(categories)
+  const { filters: { sidetext } } = useFilterProductContext();
   const [loader, setLoader] = useState("")
   const [TotalAmount, setTotalAmount] = useState(0)
 
+  useEffect(() => {
+    let tempfilterproduct = [...product];
+    if (sidetext) {
+      tempfilterproduct = tempfilterproduct.filter((curelem) => {
+        return curelem.name.toLowerCase().includes(sidetext)
+      })
+    }
+    setdashbordproduct(tempfilterproduct)
+    console.log("🚀 ~ useEffect ~ tempfilterproduct:", tempfilterproduct)
+  }, [sidetext])
   useEffect(() => {
     const calculatedTotalAmount = orders.reduce((acc, order) => {
       return acc + Number(order.ordertotal);
@@ -24,6 +37,7 @@ export default function Home() {
 
   }, [])
   const handelDelte = async (product) => {
+    console.log("🚀 ~ handelDelte ~ product:", product)
     setLoader(product.id);
     try {
       await deleteObject(ref(storage, product.image));
@@ -37,7 +51,6 @@ export default function Home() {
       setLoader(false);
       toast.success("Success! Product deleted");
     } catch (error) {
-      console.log("🚀 ~ handelDelte ~ error:", error)
       setLoader(false);
       toast.error("Error! Product not deleted");
       console.error("Error deleting product and associated image:", error);
@@ -89,7 +102,7 @@ export default function Home() {
           </div>
           <div className="col-12 mb-2 col-md-6 col-lg-3">
             <Link to={'/dashbord/user'} className='text-decoration-none'>
-              <DashBordCard title="Total Amount" totalOrder={TotalAmount} bg="warning" icon="money-check-dollar" />
+              <DashBordCard title="Total Amount" totalOrder={`AED ${TotalAmount}`} bg="warning" icon="money-check-dollar" />
             </Link>
           </div>
 
@@ -147,7 +160,7 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            {product.map((item, j) => {
+            {dashbordproduct.map((item, j) => {
 
               return (
                 <tr key={j}>

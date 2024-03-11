@@ -11,6 +11,7 @@ const initialState = {
     short_value: "lowest",
     filters: {
         text: "",
+        sidetext: "",
         category: "All",
         company: "All",
         maxprice: 0,

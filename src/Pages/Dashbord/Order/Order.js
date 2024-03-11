@@ -55,7 +55,7 @@ export default function Order() {
                       <td>{order.state.phone}</td>
                       <td>{order.state.postcode}</td>
                       <td>{order.state.countryname}</td>
-                      <td>{order.ordertotal}</td>
+                      <td>AED {order.ordertotal}</td>
                       <td><button className="text-white py-2 px-3 btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => handelModelProduct(order.product)}>View</button></td>
                       <td>{order.status}</td>
                       <td>
