@@ -2,25 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../Context/AuthContext';
 import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import { firestore } from '../../../config/firebase';
+import { useProductContext } from '../../Context/ProductContext';
 
 export default function UserProfile() {
-    const [orders, setorders] = useState([])
+    const { orders } = useProductContext();
+    const [order, setorder] = useState(orders)
     const { user } = useContext(AuthContext)
     const [modelProduct, setmodelProduct] = useState([])
-    useEffect(() => {
-        fetchDoc()
-    }, [])
-    const fetchDoc = async () => {
-        let arry = []
-        const querySnapshot = await getDocs(collection(firestore, "orders"));
-        querySnapshot.forEach((doc) => {
-            let data = doc.data()
-            if (user.uid === data.uid) {
-                arry.push(data)
-            }
-        });
-        setorders(arry)
-    }
     const handelModelProduct = (order) => {
         setmodelProduct(order)
     }
@@ -30,7 +18,7 @@ export default function UserProfile() {
             let newdoc = orders.filter((item) => {
                 return item.id != order.id
             });
-            setorders(newdoc)
+            setorder(newdoc)
         } catch (error) {
             console.error(error);
         }
@@ -77,15 +65,6 @@ export default function UserProfile() {
                                     </div>
                                 </div>
                                 <hr />
-                                <div className="row ">
-                                    <div className="col">
-                                        <h6>Role</h6>
-                                    </div>
-                                    <div className="col-9 text-secondary text-lowercase">
-                                        {user.role}
-                                    </div>
-                                </div>
-                                <hr />
                             </div>
                         </div>
                     </div>
@@ -103,20 +82,22 @@ export default function UserProfile() {
                         </thead>
                         <tbody>
 
-                            {orders.map((order, i) => {
-
-                                return (
-                                    <tr key={i}>
-                                        <td>{i + 1}</td>
-                                        <td>{order.status}</td>
-                                        <td>AED {order.ordertotal}</td>
-                                        <td><button className="text-white py-2 px-3 btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => handelModelProduct(order.product)}>ProductView</button></td>
-                                        <td>
-                                            <button className="text-white py-2 px-3 btn btn-danger" onClick={() => handeldelet(order)}>Cancel</button>
-                                        </td>
-                                    </tr>
-                                )
-                            })}
+                            {
+                                order.map((order, i) => {
+                                    if (user.uid === order.uid) {
+                                        return (
+                                            <tr key={i}>
+                                                <td>{i + 1}</td>
+                                                <td>{order.status}</td>
+                                                <td>AED {order.ordertotal}</td>
+                                                <td><button className="text-white py-2 px-3 btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => handelModelProduct(order.product)}>ProductView</button></td>
+                                                <td>
+                                                    <button className="text-white py-2 px-3 btn btn-danger" onClick={() => handeldelet(order)}>Cancel</button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    }
+                                })}
                         </tbody>
                     </table>
                 </div>

@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { setDoc, doc } from "firebase/firestore";
 import { firestore } from '../../../config/firebase';
 import { AuthContext } from '../../Context/AuthContext';
+import { useProductContext } from '../../Context/ProductContext';
 
 const initialState = {
     firstname: "",
@@ -19,9 +20,10 @@ const initialState = {
 
 export default function Check() {
 
+    const { orders } = useProductContext();
     const { user } = useContext(AuthContext)
     const { total_price, cart, dispatch } = useCartContext();
-    const ordertotal = total_price ;
+    const ordertotal = total_price;
     const [state, Setstate] = useState(initialState)
     const [loading, setloading] = useState(false)
 
@@ -68,11 +70,14 @@ export default function Check() {
         setloading(true)
         const product = cart
         let id = Math.random().toString(36).slice(2)
+        let orderdata = {
+            state, ordertotal, product, id: id, uid: user.uid, status: "pending"
+        }
         try {
-            await setDoc(doc(firestore, "orders", id), {
-                state, ordertotal, product, id: id, uid: user.uid, status: "pending"
-            })
-            toast.success("Order Submit Successfully", { position: "bottom-left" })
+            await setDoc(doc(firestore, "orders", id), orderdata)
+            orders.push(orderdata)
+            dispatch({ type: "SET_ORDER_DATA", payload: orders });
+            toast.success("CheckOut Successfully", { position: "bottom-left" })
         } catch (e) {
             toast.error(" Something Went Wrong Please Try Again", { position: "bottom-left" })
         }

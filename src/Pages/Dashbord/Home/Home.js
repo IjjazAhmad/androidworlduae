@@ -27,7 +27,6 @@ export default function Home() {
       })
     }
     setdashbordproduct(tempfilterproduct)
-    console.log("🚀 ~ useEffect ~ tempfilterproduct:", tempfilterproduct)
   }, [sidetext])
   useEffect(() => {
     const calculatedTotalAmount = orders.reduce((acc, order) => {
@@ -36,21 +35,21 @@ export default function Home() {
     setTotalAmount(calculatedTotalAmount)
 
   }, [])
-  const handelDelte = async (product) => {
-    setLoader(product.id);
+  const handelDelte = async (item) => {
+    setLoader(item.id);
     try {
-      await deleteObject(ref(storage, product.image));
+      await deleteObject(ref(storage, item.image));
 
-      await deleteDoc(doc(firestore, 'Products', product.id));
-
-      let newProductList = product.filter((item) => item.id !== product.id);
-      setproduct(newProductList);
+      await deleteDoc(doc(firestore, 'Products', item.id));
+      
+      let newProductList = product.filter((proitem) => proitem.id !== item.id);
+      setdashbordproduct(newProductList);
       dispatch({ type: "SET_API_DATA", payload: newProductList });
-
-      setLoader(false);
       toast.success("Success! Product deleted");
+      setLoader("");
+
     } catch (error) {
-      setLoader(false);
+      setLoader("");
       toast.error("Error! Product not deleted");
       console.error("Error deleting product and associated image:", error);
     }
@@ -70,14 +69,14 @@ export default function Home() {
       setproduct(newProductList);
       dispatch({ type: "SET_API_DATA", payload: newProductList });
       let newdoc = categorie.filter((item) => {
-        return item.id != cate.id
+        return item.id !== cate.id
       });
       setcategorie(newdoc)
-
+      
       dispatch({ type: "SET_CATEGORY_DATA", payload: newdoc });
       setLoader(false)
     } catch (error) {
-      console.log("🚀 ~ HandelCatDelete ~ error:", error)
+      toast.error("Error! Category Not Deleted");
       setLoader("")
     }
   }
@@ -129,14 +128,14 @@ export default function Home() {
                 <div className='py-3 my-5 cat-card bg-dark rounded-4 me-2'>
                   <div className="d-flex justify-content-center align-items-center flex-column text-center">
                     {
-                      loader == item.id ?
+                      loader === item.id ?
                         <div className="spinner-border text-center" role="status">
                           <span className="visually-hidden">Loading...</span>
                         </div> :
                         <>
                           <div className="icon p-3 d-flex flex-column justify-content-center align-items-center bg-primary-subtle rounded-2" style={{ height: "120px", width: "120px" }} >
                             <i className='fa fa-trash delet' onClick={() => HandelCatDelete(item)}></i>
-                            <img src={item.img} className='rounded-circle' style={{ height: "90px", width: "90px" }} />
+                            <img src={item.img} alt='logo' className='rounded-circle' style={{ height: "90px", width: "90px" }} />
                           </div>
                           <h5 className='text-black mt-2 mb-0'>{item.category}</h5>
                         </>
@@ -164,14 +163,14 @@ export default function Home() {
               return (
                 <tr key={j}>
                   <th scope="row">{j + 1}</th>
-                  <td className='w-25'><img src={item.image} className='cart-img' /></td>
+                  <td className='w-25'><img src={item.image} alt='logo' className='cart-img' /></td>
                   <td>{item.name}</td>
                   <td>AED {(item.price)}</td>
                   <td>
                     <button className="text-white py-2 px-3 btn btn-danger" onClick={() => handelDelte(item)}>
 
                       {
-                        loader == item.id ?
+                        loader === item.id ?
                           <div className="spinner-border spinner-border-sm text-center" role="status">
                             <span className="visually-hidden">Loading...</span>
                           </div> :

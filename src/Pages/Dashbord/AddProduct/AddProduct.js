@@ -253,7 +253,7 @@ export default function AddProduct() {
                 <label>CATEGORY</label>
                 <select className="form-select shadow-none" name='selectedcategory' value={state.selectedcategory} onChange={handelChange} >
 
-                  <option value="">No Selected</option>
+                  <option selected >No Selected</option>
                   {categories.map((element, index) => {
                     if (index < 5) {
                       return (

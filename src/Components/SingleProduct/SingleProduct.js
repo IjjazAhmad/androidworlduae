@@ -44,7 +44,6 @@ export default function SingleProduct() {
                         <p>({singleProduct.reviews}  Customer Reviews)</p>
                       </div>
                       <p> <span className='text-danger'>Deal of the day :</span> AED {singleProduct.price}</p>
-                      <div dangerouslySetInnerHTML={{__html: singleProduct.description}}></div>
                       <p>Available : <span className='text-danger'>{singleProduct.stock > 0 ? "In Stock" : "Not Available"}</span></p>
                       <p>id : <span className='text-danger'>{singleProduct.id}</span></p>
                       <p>Brands : <span className='text-danger'>{singleProduct.company}</span></p>
@@ -64,8 +63,8 @@ export default function SingleProduct() {
                 <div className="row">
                   <div className="col">
                     <h3>Product Description</h3>
-                    <p className='border border-2 rounded-3 p-3 w-100' style={{ minHeight: "200px" }}><div dangerouslySetInnerHTML={{__html: singleProduct.description}}></div>
-                    </p>
+                    <div dangerouslySetInnerHTML={{__html: singleProduct.description}} className='border border-2 rounded-3 p-3 w-100' style={{ minHeight: "200px" }}></div>
+                    
                   </div>
                 </div>
               </React.Fragment>

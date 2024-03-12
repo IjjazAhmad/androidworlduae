@@ -42,11 +42,11 @@ export default function Header() {
         signOut(auth)
             .then(() => {
                 dispatch({ type: "LOGOUT" })
-                toast.danger("Logout dangerfully", { position: "bottom-left" })
+                toast.success("Logout Successfuly", { position: "bottom-left" })
                 navigate("/")
             })
             .catch(() => {
-                alert(" Something Went Wrong Please Try Again")
+                toast.error("Something Went Wrong Please Try Again", { position: "bottom-left" })
             })
     }
 
